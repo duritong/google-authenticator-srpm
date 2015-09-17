@@ -1,8 +1,6 @@
-%define checkout 20150913
-%define gh_commit 1d4d95014e57eb68b874021c84e781d1010b0165
+%define checkout 20150916
+%define gh_commit beb43d7baf22c0f9c0d0f87c1ce5473c41943d06
 %define gh_short %(c=%{gh_commit}; echo ${c:0:7})
-%define gh_owner sebastianbergmann
-%define gh_project php-token-stream
 
 
 Name:           google-authenticator
@@ -38,8 +36,6 @@ algorithm specified in RFC 4226 and the Time-based One-time Password
 cd libpam
 ./bootstrap.sh
 %configure
-# https://github.com/google/google-authenticator/issues/517
-sed -i 's/^#define PAM_CONST .*/#define PAM_CONST const/' config.h
 make %{?_smp_mflags}
 
 %check
